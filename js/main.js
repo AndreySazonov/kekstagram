@@ -1,3 +1,4 @@
+//Функция, возвращающая случайное целое число из переданного диапазона включительно
 function getRandomInteger(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -6,4 +7,10 @@ function getRandomInteger(min, max) {
   }
 }
 
-getRandomInteger(0, 10);
+//Функция для проверки максимальной длины строки
+function getStringLength(someString, maxLength) {
+  return someString.length <= maxLength;
+}
+
+getRandomInteger(0, 1);
+getStringLength('', 140);
