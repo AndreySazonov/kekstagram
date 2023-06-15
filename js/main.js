@@ -66,12 +66,12 @@ const createNewPost = () => {
   SERIAL_NUMBER++;
   return {
     id: SERIAL_NUMBER,
-    url: 'photos/' + SERIAL_NUMBER + '.jpg',
+    url: `photos/${SERIAL_NUMBER}.jpg`,
     description: getRandomArrayElement(PHOTO_DESCRIPTIONS),
     likes: getRandomInteger(15, 200),
     comments: {
       id: SERIAL_NUMBER,
-      avatar: 'img/avatar-' + getRandomInteger(1, 6) + '.svg',
+      avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
       message: getRandomArrayElement(MESSAGES),
       name: getRandomArrayElement(USERS_NAMES)
     }
@@ -79,3 +79,5 @@ const createNewPost = () => {
 };
 
 const newPosts = Array.from({length: NEW_POST_COUNT}, createNewPost);
+// eslint-disable-next-line no-console
+console.log(newPosts);
