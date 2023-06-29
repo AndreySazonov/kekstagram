@@ -41,21 +41,24 @@ const PHOTO_DESCRIPTIONS = [
 const NEW_POST_COUNT = 25;
 
 //!Порядковый номер для id, id комментария и url, придумать рандом без повтора
-let SERIAL_NUMBER = 0;
+let idDescription = 0;
+let idComment = 1;
+
+const createComment = () => ({
+  id: idComment++,
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  message: getRandomArrayElement(MESSAGES),
+  name: getRandomArrayElement(USERS_NAMES)
+});
 
 const createNewPost = () => {
-  SERIAL_NUMBER++;
+  idDescription++;
   return {
-    id: SERIAL_NUMBER,
-    url: `photos/${SERIAL_NUMBER}.jpg`,
+    id: idDescription,
+    url: `photos/${idDescription}.jpg`,
     description: getRandomArrayElement(PHOTO_DESCRIPTIONS),
     likes: getRandomInteger(15, 200),
-    comments: {
-      id: SERIAL_NUMBER,
-      avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-      message: getRandomArrayElement(MESSAGES),
-      name: getRandomArrayElement(USERS_NAMES)
-    }
+    comments: Array.from({length: getRandomInteger(1, 20)}, createComment)
   };
 };
 
