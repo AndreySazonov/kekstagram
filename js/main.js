@@ -1,6 +1,6 @@
 import './util.js';
-import {createNewPosts} from './data.js';
-import './rendering.js';
+import './data.js';
+import './render-miniature.js';
+import './full-screen-view.js';
 
 // eslint-disable-next-line no-console
-console.log(createNewPosts());
