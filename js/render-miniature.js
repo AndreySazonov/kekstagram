@@ -1,4 +1,5 @@
 import {createNewPosts} from './data.js';
+import {showFullScreen} from './full-screen-view.js';
 
 //Контейнер для отрисовки фотографий
 const picturesList = document.querySelector('.pictures');
@@ -10,12 +11,17 @@ const pictureNewPost = createNewPosts();
 
 const pictureListFragment = document.createDocumentFragment();
 
-pictureNewPost.forEach(({url, likes, comments}) => {
+pictureNewPost.forEach((picture) => {
   const pictureElement = pictureTemplate.cloneNode(true);
-  pictureElement.querySelector('.picture__img').src = url;
-  pictureElement.querySelector('.picture__likes').textContent = likes;
-  pictureElement.querySelector('.picture__comments').textContent = comments.length;
+  pictureElement.querySelector('.picture__img').src = picture.url;
+  pictureElement.querySelector('.picture__likes').textContent = picture.likes;
+  pictureElement.querySelector('.picture__comments').textContent = picture.comments.length;
+  pictureElement.addEventListener('click', () => {
+    showFullScreen(picture);
+  });
   pictureListFragment.append(pictureElement);
 });
 
 picturesList.append(pictureListFragment);
+
+export {picturesList};

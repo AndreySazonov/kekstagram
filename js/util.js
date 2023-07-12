@@ -16,7 +16,12 @@ function getStringLength(someString, maxLength) {
 //Поиск случайного элемента в переданном массиве
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export {getRandomInteger, getStringLength, getRandomArrayElement};
+//Функция создания элемента с необходимым классом
+const makeElement = (tagName, className) => {
+  const element = document.createElement(tagName);
+  element.classList.add(className);
+  return element;
+};
 
-// getRandomInteger(0, 1);
-// getStringLength('', 140);
+export {getRandomInteger, getStringLength, getRandomArrayElement, makeElement};
+
